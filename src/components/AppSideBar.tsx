@@ -1,9 +1,12 @@
 import {
   Calendar,
+  ChevronRight,
   ChevronUp,
   Home,
   Inbox,
   Plus,
+  PlusCircle,
+  Projector,
   Settings,
   User2,
 } from "lucide-react";
@@ -16,6 +19,7 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarMenu,
+  SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "./ui/sidebar";
@@ -27,6 +31,11 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import HeaderSideBar from "./sideBarComponents/headerSideBar";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "./ui/collapsible";
 
 const items = [
   {
@@ -74,6 +83,10 @@ export default function AppSideBar() {
                       </span>
                     </Link>
                   </SidebarMenuButton>
+
+                  {item.title === "Inbox" && (
+                    <SidebarMenuBadge>21</SidebarMenuBadge>
+                  )}
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
@@ -85,7 +98,60 @@ export default function AppSideBar() {
           <SidebarGroupAction>
             <Plus /> <span className="sr-only">Add Project</span>
           </SidebarGroupAction>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"/"}>
+                    <Projector /> Lihat Project
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <Link href={"/"}>
+                    <PlusCircle /> Tambah Project
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
         </SidebarGroup>
+
+        {/* Bikin grup baru  collasible*/}
+
+        <Collapsible defaultOpen className="group/collapsible">
+          <SidebarGroup>
+            <SidebarGroupLabel asChild>
+              <CollapsibleTrigger>
+                Hai
+                <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+              </CollapsibleTrigger>
+            </SidebarGroupLabel>
+            <CollapsibleContent>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild>
+                      <Link href={"/"}>
+                        <Projector /> Lihat Project
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild>
+                      <Link href={"/"}>
+                        <PlusCircle /> Tambah Project
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </CollapsibleContent>
+          </SidebarGroup>
+        </Collapsible>
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
