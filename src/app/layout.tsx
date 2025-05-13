@@ -33,7 +33,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex min-h-screen overflow-hidden`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex`}
       >
         <ThemeProvider
           attribute="class"
